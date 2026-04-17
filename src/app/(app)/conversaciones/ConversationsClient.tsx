@@ -1,7 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Bot, BotOff, Search, ArrowLeft, Phone } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  Bot,
+  BotOff,
+  Search,
+  ArrowLeft,
+  Phone,
+  Send,
+  Loader2,
+} from "lucide-react";
 import type { Conversation } from "@/lib/types";
 import { formatRelative, formatTime } from "@/lib/format";
 
@@ -16,6 +24,10 @@ export default function ConversationsClient({
   );
   const [query, setQuery] = useState("");
   const [toggling, setToggling] = useState<string | null>(null);
+  const [draft, setDraft] = useState("");
+  const [sending, setSending] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
@@ -34,6 +46,65 @@ export default function ConversationsClient({
   }, [list, query]);
 
   const selected = list.find((c) => c.id === selectedId) ?? null;
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [selectedId, selected?.messages.length]);
+
+  useEffect(() => {
+    setDraft("");
+    textareaRef.current?.focus();
+  }, [selectedId]);
+
+  async function sendMessage(pauseBot = false) {
+    if (!selected) return;
+    const text = draft.trim();
+    if (!text || sending) return;
+    setSending(true);
+    const optimistic = {
+      id: `tmp${Date.now()}`,
+      from: "mateo" as const,
+      text,
+      at: new Date().toISOString(),
+    };
+    setList((prev) =>
+      prev.map((c) =>
+        c.id === selected.id
+          ? {
+              ...c,
+              messages: [...c.messages, optimistic],
+              preview: text,
+              lastMessageAt: optimistic.at,
+              botEnabled: pauseBot ? false : c.botEnabled,
+            }
+          : c,
+      ),
+    );
+    setDraft("");
+    try {
+      const res = await fetch(`/api/conversations/${selected.id}/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, pauseBot }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setList((prev) =>
+          prev.map((c) => (c.id === selected.id ? data.conversation : c)),
+        );
+      }
+    } finally {
+      setSending(false);
+      textareaRef.current?.focus();
+    }
+  }
+
+  function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(false);
+    }
+  }
 
   async function toggleBot(id: string) {
     const current = list.find((c) => c.id === id);
@@ -191,6 +262,11 @@ export default function ConversationsClient({
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 bg-brand-black">
+              {selected.messages.length === 0 && (
+                <div className="text-center text-white/30 text-sm py-8">
+                  Sin mensajes todavía.
+                </div>
+              )}
               {selected.messages.map((m) => {
                 const isClient = m.from === "client";
                 const isMateo = m.from === "mateo";
@@ -221,17 +297,65 @@ export default function ConversationsClient({
                   </div>
                 );
               })}
+              <div ref={messagesEndRef} />
             </div>
 
-            <div className="px-4 py-3 border-t border-white/5 bg-brand-night/60 text-xs text-white/50">
-              Este es un panel de monitoreo. Los mensajes los envía el agente
-              de WhatsApp de Ready Golf.
-              {!selected.botEnabled && (
-                <span className="text-brand-greenSoft">
-                  {" "}
-                  · Bot pausado en este chat, podés responder desde WhatsApp.
-                </span>
+            <div className="border-t border-white/5 bg-brand-night/70">
+              {selected.botEnabled && (
+                <div className="px-4 pt-2 text-[11px] text-brand-greenSoft flex items-center gap-1.5">
+                  <Bot size={12} />
+                  El bot está activo. Si enviás vos, vas a responder en
+                  paralelo.
+                </div>
               )}
+              <div className="flex items-end gap-2 p-3 sm:p-4">
+                <textarea
+                  ref={textareaRef}
+                  value={draft}
+                  onChange={(e) => setDraft(e.target.value)}
+                  onKeyDown={onKeyDown}
+                  rows={1}
+                  placeholder="Escribí un mensaje como Mateo..."
+                  className="input resize-none max-h-40 leading-6"
+                  style={{
+                    height: "auto",
+                    minHeight: "42px",
+                  }}
+                  onInput={(e) => {
+                    const el = e.currentTarget;
+                    el.style.height = "auto";
+                    el.style.height = Math.min(el.scrollHeight, 160) + "px";
+                  }}
+                />
+                {selected.botEnabled && draft.trim() && (
+                  <button
+                    onClick={() => sendMessage(true)}
+                    disabled={sending}
+                    className="btn-ghost hidden sm:inline-flex"
+                    title="Enviar y pausar el bot en este chat"
+                  >
+                    <BotOff size={14} />
+                    <span className="text-xs">Enviar y pausar bot</span>
+                  </button>
+                )}
+                <button
+                  onClick={() => sendMessage(false)}
+                  disabled={sending || !draft.trim()}
+                  className="btn-primary shrink-0"
+                  aria-label="Enviar"
+                >
+                  {sending ? (
+                    <Loader2 size={16} className="animate-spin" />
+                  ) : (
+                    <Send size={16} />
+                  )}
+                  <span className="hidden sm:inline">Enviar</span>
+                </button>
+              </div>
+              <div className="px-4 pb-2 text-[10px] text-white/30">
+                Enter envía · Shift + Enter salto de línea · Tu mensaje lo
+                reenvía el agente por WhatsApp.
+              </div>
             </div>
           </>
         )}

@@ -86,13 +86,15 @@ export default async function DashboardPage() {
         })}
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-4">
-        <div className="card p-5 lg:col-span-2">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-semibold text-brand-ink">Últimas conversaciones</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div className="card p-4 sm:p-5 lg:col-span-2 min-w-0 overflow-hidden">
+          <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2 min-w-0">
+            <h2 className="font-semibold text-brand-ink text-sm sm:text-base truncate">
+              Últimas conversaciones
+            </h2>
             <Link
               href="/conversaciones"
-              className="text-xs text-brand-green hover:underline"
+              className="text-xs text-brand-green hover:underline shrink-0"
             >
               Ver todas →
             </Link>
@@ -109,9 +111,9 @@ export default async function DashboardPage() {
               .map((c) => (
                 <div
                   key={c.id}
-                  className="py-3 flex items-center gap-3 text-sm"
+                  className="py-3 flex items-center gap-2.5 sm:gap-3 text-sm min-w-0"
                 >
-                  <div className="w-9 h-9 rounded-full bg-brand-paper border border-brand-border flex items-center justify-center font-semibold text-brand-ink">
+                  <div className="w-9 h-9 rounded-full bg-brand-paper border border-brand-border flex items-center justify-center font-semibold text-brand-ink shrink-0">
                     {c.contactName[0]}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -122,7 +124,9 @@ export default async function DashboardPage() {
                       {c.preview}
                     </div>
                   </div>
-                  <span className={c.botEnabled ? "chip-green" : "chip"}>
+                  <span
+                    className={`${c.botEnabled ? "chip-green" : "chip"} shrink-0`}
+                  >
                     <Bot size={12} /> {c.botEnabled ? "On" : "Off"}
                   </span>
                 </div>
@@ -130,17 +134,19 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="card p-5">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-semibold text-brand-ink">Resumen comercial</h2>
-            <TrendingUp size={16} className="text-brand-green" />
+        <div className="card p-4 sm:p-5 min-w-0 overflow-hidden">
+          <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
+            <h2 className="font-semibold text-brand-ink text-sm sm:text-base truncate">
+              Resumen comercial
+            </h2>
+            <TrendingUp size={16} className="text-brand-green shrink-0" />
           </div>
           <div className="space-y-4">
             <div>
               <div className="text-xs text-brand-ink/50">
                 Ventas totales (contactos registrados)
               </div>
-              <div className="text-2xl font-bold text-brand-ink">
+              <div className="text-xl sm:text-2xl font-bold text-brand-ink break-words">
                 {formatARS(totalRevenue)}
               </div>
             </div>

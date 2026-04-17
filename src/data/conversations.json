@@ -60,7 +60,7 @@
     "messages": [
       { "id": "m1", "from": "client", "text": "Necesito un set P790 pero quiero hacer fitting antes", "at": "2026-04-17T11:10:00.000Z" },
       { "id": "m2", "from": "bot", "text": "Hola Diego, el Set P790 2025 está $3.150.000. Podemos coordinar fitting en el local.", "at": "2026-04-17T11:11:00.000Z" },
-      { "id": "m3", "from": "mateo", "text": "Diego, soy Mateo. Te paso mañana con los datos del fitting.", "at": "2026-04-17T11:30:00.000Z" }
+      { "id": "m3", "from": "operator", "operatorName": "Mateo", "text": "Diego, soy Mateo. Te paso mañana con los datos del fitting.", "at": "2026-04-17T11:30:00.000Z" }
     ]
   },
   {

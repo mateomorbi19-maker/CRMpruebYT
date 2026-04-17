@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-label="Ready Golf Shop">
+  <g fill="#0B0F0D">
+    <text x="260" y="180"
+          text-anchor="middle"
+          font-family="'Great Vibes','Allura',cursive"
+          font-weight="400"
+          font-size="180"
+          letter-spacing="-2">Ready</text>
+    <text x="260" y="240"
+          text-anchor="middle"
+          font-family="'Inter','Helvetica Neue',sans-serif"
+          font-weight="400"
+          letter-spacing="14"
+          font-size="30">GOLF SHOP</text>
+  </g>
+</svg>

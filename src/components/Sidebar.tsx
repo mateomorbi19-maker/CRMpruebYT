@@ -40,19 +40,19 @@ export default function Sidebar({
     <>
       {open && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-30 lg:hidden"
+          className="fixed inset-0 bg-brand-ink/30 backdrop-blur-sm z-30 lg:hidden"
           onClick={onClose}
         />
       )}
       <aside
-        className={`fixed lg:sticky top-0 left-0 h-screen w-72 bg-brand-night border-r border-white/5 z-40 transform transition-transform ${
+        className={`fixed lg:sticky top-0 left-0 h-screen w-72 bg-brand-white border-r border-brand-border z-40 transform transition-transform ${
           open ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 flex flex-col`}
       >
         <div className="flex items-center justify-between px-5 pt-5 pb-3 lg:pb-6">
-          <Logo size="sm" className="w-[110px] h-auto" />
+          <Logo size="sm" variant="dark" className="w-[110px] h-auto" />
           <button
-            className="lg:hidden text-white/60 hover:text-white"
+            className="lg:hidden text-brand-ink/60 hover:text-brand-ink"
             onClick={onClose}
             aria-label="Cerrar menú"
           >
@@ -79,18 +79,18 @@ export default function Sidebar({
           })}
         </nav>
 
-        <div className="p-3 border-t border-white/5">
+        <div className="p-3 border-t border-brand-border">
           <div className="flex items-center gap-3 px-2 py-2">
-            <div className="w-9 h-9 rounded-full bg-brand-green text-black font-bold flex items-center justify-center">
+            <div className="w-9 h-9 rounded-full bg-brand-green text-white font-bold flex items-center justify-center">
               {userName[0]}
             </div>
             <div className="flex-1">
-              <div className="text-sm font-semibold">{userName}</div>
-              <div className="text-xs text-white/40">Conectado</div>
+              <div className="text-sm font-semibold text-brand-ink">{userName}</div>
+              <div className="text-xs text-brand-ink/40">Conectado</div>
             </div>
             <button
               onClick={logout}
-              className="text-white/50 hover:text-brand-greenSoft"
+              className="text-brand-ink/50 hover:text-brand-green"
               aria-label="Cerrar sesión"
             >
               <LogOut size={18} />

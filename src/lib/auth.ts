@@ -7,6 +7,12 @@ export const USERS = [
     role: "Owner",
     avatarInitials: "M",
   },
+  {
+    id: "ulises",
+    name: "Ulises",
+    role: "Operador",
+    avatarInitials: "U",
+  },
 ] as const;
 
 export type AppUser = (typeof USERS)[number];

@@ -112,7 +112,7 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
         <div>
           <h1 className="text-2xl font-bold">Productos</h1>
-          <p className="text-white/50 text-sm">
+          <p className="text-brand-ink/50 text-sm">
             Edición directa. Los cambios se envían a la memoria del agente.
           </p>
         </div>
@@ -120,7 +120,7 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
           <div className="relative flex-1 sm:w-72">
             <Search
               size={16}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-ink/40"
             />
             <input
               value={query}
@@ -147,8 +147,8 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
           onClick={() => setCat("all")}
           className={`px-3 py-1.5 rounded-xl text-sm border whitespace-nowrap ${
             cat === "all"
-              ? "bg-brand-green text-black border-brand-green"
-              : "border-white/10 text-white/70"
+              ? "bg-brand-green text-white border-brand-green"
+              : "border-brand-border text-brand-ink/70"
           }`}
         >
           Todas ({products.length})
@@ -162,8 +162,8 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
               onClick={() => setCat(c)}
               className={`px-3 py-1.5 rounded-xl text-sm border whitespace-nowrap ${
                 active
-                  ? "bg-brand-green text-black border-brand-green"
-                  : "border-white/10 text-white/70"
+                  ? "bg-brand-green text-white border-brand-green"
+                  : "border-brand-border text-brand-ink/70"
               }`}
             >
               {c} ({count})
@@ -230,7 +230,7 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
       )}
 
       <div className="card overflow-hidden">
-        <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 text-xs uppercase tracking-wider text-white/40 border-b border-white/5">
+        <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 text-xs uppercase tracking-wider text-brand-ink/40 border-b border-brand-border">
           <div className="col-span-5">Producto</div>
           <div className="col-span-2">Categoría</div>
           <div className="col-span-2 text-right">Precio</div>
@@ -239,7 +239,7 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
         </div>
         <div className="divide-y divide-white/5">
           {filtered.length === 0 && (
-            <div className="p-8 text-center text-white/40 text-sm">
+            <div className="p-8 text-center text-brand-ink/40 text-sm">
               Sin productos en este filtro.
             </div>
           )}
@@ -248,7 +248,7 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
             return (
               <div
                 key={p.id}
-                className="px-4 sm:px-5 py-4 md:grid md:grid-cols-12 md:gap-4 flex flex-col gap-2 hover:bg-white/[0.02] transition"
+                className="px-4 sm:px-5 py-4 md:grid md:grid-cols-12 md:gap-4 flex flex-col gap-2 hover:bg-brand-paper/60 transition"
               >
                 <div className="md:col-span-5">
                   {editing ? (
@@ -268,7 +268,7 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
                         <a
                           href={p.url}
                           target="_blank"
-                          className="text-white/40 hover:text-brand-greenSoft shrink-0 mt-0.5"
+                          className="text-brand-ink/40 hover:text-brand-green shrink-0 mt-0.5"
                           aria-label="Ver en tienda"
                         >
                           <ExternalLink size={14} />
@@ -307,10 +307,10 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
                     />
                   ) : (
                     <div>
-                      <div className="md:hidden text-xs text-white/40 uppercase tracking-wider">
+                      <div className="md:hidden text-xs text-brand-ink/40 uppercase tracking-wider">
                         Precio
                       </div>
-                      <div className="text-brand-greenSoft font-semibold">
+                      <div className="text-brand-green font-semibold">
                         {formatARS(p.price)}
                       </div>
                     </div>
@@ -332,12 +332,12 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
                     />
                   ) : (
                     <div>
-                      <div className="md:hidden text-xs text-white/40 uppercase tracking-wider">
+                      <div className="md:hidden text-xs text-brand-ink/40 uppercase tracking-wider">
                         Stock
                       </div>
                       <div
                         className={
-                          p.stock > 0 ? "text-white" : "text-red-400"
+                          p.stock > 0 ? "text-brand-ink" : "text-red-500"
                         }
                       >
                         {p.stock}
@@ -390,9 +390,9 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
         </div>
       </div>
 
-      <p className="text-xs text-white/40 mt-4">
+      <p className="text-xs text-brand-ink/40 mt-4">
         Los cambios se notifican al agente vía{" "}
-        <code className="text-white/60">AGENT_SYNC_WEBHOOK</code> para actualizar
+        <code className="text-brand-ink/60">AGENT_SYNC_WEBHOOK</code> para actualizar
         su memoria en tiempo real.
       </p>
     </div>

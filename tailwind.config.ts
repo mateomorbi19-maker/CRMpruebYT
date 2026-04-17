@@ -6,14 +6,16 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          black: "#0A0A0A",
-          night: "#111111",
-          graphite: "#1C1C1C",
-          green: "#16A34A",
-          greenDark: "#0E7A36",
-          greenSoft: "#22C55E",
           white: "#FFFFFF",
-          muted: "#9CA3AF",
+          paper: "#FAFAF9",
+          surface: "#F3F6F3",
+          border: "#E5E7EB",
+          ink: "#0B0F0D",
+          black: "#000000",
+          muted: "#6B7280",
+          green: "#15803D",
+          greenSoft: "#16A34A",
+          greenTint: "#DCFCE7",
         },
       },
       fontFamily: {
@@ -21,7 +23,8 @@ const config: Config = {
         sans: ["Inter", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(34,197,94,0.3), 0 10px 30px -12px rgba(34,197,94,0.35)",
+        card: "0 1px 2px rgba(11,15,13,0.04), 0 8px 24px -12px rgba(11,15,13,0.10)",
+        glow: "0 0 0 1px rgba(22,163,74,0.35), 0 12px 40px -12px rgba(22,163,74,0.30)",
       },
     },
   },

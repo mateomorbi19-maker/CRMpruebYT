@@ -57,14 +57,14 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
         <div>
           <h1 className="text-2xl font-bold">Contactos</h1>
-          <p className="text-white/50 text-sm">
+          <p className="text-brand-ink/50 text-sm">
             Clientes y leads generados por el agente de WhatsApp.
           </p>
         </div>
         <div className="relative sm:w-80">
           <Search
             size={16}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-ink/40"
           />
           <input
             value={q}
@@ -84,14 +84,14 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
               onClick={() => setFilter(f.id)}
               className={`px-3 sm:px-4 py-1.5 rounded-xl text-sm font-medium border transition flex items-center gap-2 ${
                 active
-                  ? "bg-brand-green text-black border-brand-green"
-                  : "border-white/10 text-white/70 hover:border-white/30"
+                  ? "bg-brand-green text-white border-brand-green"
+                  : "border-brand-border text-brand-ink/70 hover:border-brand-ink/30"
               }`}
             >
               {f.label}
               <span
                 className={`text-xs rounded-full px-1.5 py-0.5 ${
-                  active ? "bg-black/20" : "bg-white/10"
+                  active ? "bg-white/25" : "bg-brand-paper"
                 }`}
               >
                 {counts[f.id]}
@@ -102,7 +102,7 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
       </div>
 
       <div className="card overflow-hidden">
-        <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 text-xs uppercase tracking-wider text-white/40 border-b border-white/5">
+        <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 text-xs uppercase tracking-wider text-brand-ink/40 border-b border-brand-border">
           <div className="col-span-4">Contacto</div>
           <div className="col-span-2">Estado</div>
           <div className="col-span-3">Tags</div>
@@ -111,22 +111,22 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
         </div>
         <div className="divide-y divide-white/5">
           {filtered.length === 0 && (
-            <div className="p-8 text-center text-white/40 text-sm">
+            <div className="p-8 text-center text-brand-ink/40 text-sm">
               Sin contactos en este filtro.
             </div>
           )}
           {filtered.map((c) => (
             <div
               key={c.id}
-              className="px-4 sm:px-5 py-4 md:grid md:grid-cols-12 md:gap-4 flex flex-col gap-2 hover:bg-white/[0.02] transition"
+              className="px-4 sm:px-5 py-4 md:grid md:grid-cols-12 md:gap-4 flex flex-col gap-2 hover:bg-brand-paper/60 transition"
             >
               <div className="md:col-span-4 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center font-semibold shrink-0">
+                <div className="w-10 h-10 rounded-full bg-brand-paper border border-brand-border flex items-center justify-center font-semibold shrink-0">
                   {c.name[0]}
                 </div>
                 <div className="min-w-0">
                   <div className="font-medium truncate">{c.name}</div>
-                  <div className="text-xs text-white/50 flex items-center gap-1.5">
+                  <div className="text-xs text-brand-ink/50 flex items-center gap-1.5">
                     <Phone size={11} /> {c.phone}
                   </div>
                 </div>
@@ -155,25 +155,25 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
               </div>
 
               <div className="md:col-span-2 md:text-right text-sm flex md:block items-center gap-2">
-                <span className="md:hidden text-white/40 text-xs uppercase tracking-wider">
+                <span className="md:hidden text-brand-ink/40 text-xs uppercase tracking-wider">
                   Gastado:
                 </span>
                 <span
                   className={
-                    c.totalSpent > 0 ? "text-brand-greenSoft font-medium" : ""
+                    c.totalSpent > 0 ? "text-brand-green font-medium" : ""
                   }
                 >
                   {formatARS(c.totalSpent)}
                 </span>
               </div>
 
-              <div className="md:col-span-1 md:text-right text-xs text-white/50">
+              <div className="md:col-span-1 md:text-right text-xs text-brand-ink/50">
                 {formatRelative(c.lastInteraction)}
               </div>
 
               {c.notes && (
-                <div className="md:col-span-12 text-xs text-white/50 md:pl-14 md:pt-2 md:border-t md:border-white/5">
-                  <span className="text-white/30 uppercase tracking-wider mr-1">
+                <div className="md:col-span-12 text-xs text-brand-ink/50 md:pl-14 md:pt-2 md:border-t md:border-brand-border">
+                  <span className="text-brand-ink/30 uppercase tracking-wider mr-1">
                     Nota:
                   </span>
                   {c.notes}

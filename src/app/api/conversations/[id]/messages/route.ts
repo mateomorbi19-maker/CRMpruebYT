@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { getCurrentUser } from "@/lib/auth.server";
 import type { Message } from "@/lib/types";
 
 export async function POST(
@@ -7,6 +8,11 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
+  const user = await getCurrentUser();
+  if (!user) {
+    return NextResponse.json({ ok: false }, { status: 401 });
+  }
+
   const body = await req.json();
   const text: string = (body?.text ?? "").toString().trim();
   const pauseBot: boolean = !!body?.pauseBot;
@@ -23,7 +29,8 @@ export async function POST(
 
   const message: Message = {
     id: `m${Date.now()}`,
-    from: "mateo",
+    from: "operator",
+    operatorName: user.name,
     text,
     at: new Date().toISOString(),
   };
@@ -49,9 +56,10 @@ export async function POST(
             : {}),
         },
         body: JSON.stringify({
-          event: "mateo_message",
+          event: "operator_message",
           conversationId: id,
           phone: conv.phone,
+          operator: user.name,
           text,
           pauseBot,
           botEnabled: conv.botEnabled,

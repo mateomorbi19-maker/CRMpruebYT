@@ -11,18 +11,18 @@ export default function TopBar({
   title: string;
 }) {
   return (
-    <header className="lg:hidden sticky top-0 z-20 bg-brand-black/85 backdrop-blur border-b border-white/5">
+    <header className="lg:hidden sticky top-0 z-20 bg-brand-white/90 backdrop-blur border-b border-brand-border">
       <div className="flex items-center gap-3 px-4 h-14">
         <button
           onClick={onMenu}
-          className="p-2 -ml-2 text-white/80 hover:text-brand-greenSoft"
+          className="p-2 -ml-2 text-brand-ink/70 hover:text-brand-green"
           aria-label="Abrir menú"
         >
           <Menu size={22} />
         </button>
-        <Logo size="sm" className="w-[90px] h-auto" />
+        <Logo size="sm" variant="dark" className="w-[90px] h-auto" />
         <div className="flex-1" />
-        <span className="text-xs text-white/50 uppercase tracking-wider">
+        <span className="text-xs text-brand-ink/50 uppercase tracking-wider">
           {title}
         </span>
       </div>

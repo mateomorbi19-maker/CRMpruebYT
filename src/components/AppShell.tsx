@@ -26,7 +26,7 @@ export default function AppShell({
     "Ready Golf CRM";
 
   return (
-    <div className="min-h-screen flex bg-brand-black bg-grid">
+    <div className="min-h-screen flex bg-brand-paper">
       <Sidebar
         open={open}
         onClose={() => setOpen(false)}

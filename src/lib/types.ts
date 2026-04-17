@@ -21,11 +21,14 @@ export type Contact = {
   notes?: string;
 };
 
+export type MessageFrom = "bot" | "client" | "operator";
+
 export type Message = {
   id: string;
-  from: "bot" | "client" | "mateo";
+  from: MessageFrom;
   text: string;
   at: string;
+  operatorName?: string;
 };
 
 export type Conversation = {

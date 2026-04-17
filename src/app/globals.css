@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
 body {
   height: 100%;
-  background: #0a0a0a;
-  color: #ffffff;
+  background: #ffffff;
+  color: #0b0f0d;
   font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -22,12 +22,12 @@ body {
   height: 10px;
 }
 *::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #fafaf9;
 }
 *::-webkit-scrollbar-thumb {
-  background: #1c1c1c;
+  background: #d1d5db;
   border-radius: 999px;
-  border: 2px solid #0a0a0a;
+  border: 2px solid #fafaf9;
 }
 *::-webkit-scrollbar-thumb:hover {
   background: #16a34a;
@@ -35,36 +35,43 @@ body {
 
 @layer components {
   .card {
-    @apply bg-brand-graphite/70 backdrop-blur border border-white/5 rounded-2xl;
+    @apply bg-brand-white border border-brand-border rounded-2xl shadow-card;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-green hover:bg-brand-greenSoft text-black font-semibold px-4 py-2 transition active:scale-[0.98] disabled:opacity-60;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-green hover:bg-brand-greenSoft text-white font-semibold px-4 py-2 transition active:scale-[0.98] disabled:opacity-60;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 hover:border-brand-green/60 hover:text-brand-green text-white/80 px-4 py-2 transition;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-brand-border bg-white hover:border-brand-green hover:text-brand-green text-brand-ink/70 px-4 py-2 transition;
   }
   .chip {
-    @apply inline-flex items-center gap-1 rounded-full border border-white/10 px-2.5 py-0.5 text-xs text-white/70;
+    @apply inline-flex items-center gap-1 rounded-full border border-brand-border bg-brand-paper px-2.5 py-0.5 text-xs text-brand-ink/70;
   }
   .chip-green {
-    @apply inline-flex items-center gap-1 rounded-full bg-brand-green/15 text-brand-greenSoft border border-brand-green/30 px-2.5 py-0.5 text-xs;
+    @apply inline-flex items-center gap-1 rounded-full bg-brand-greenTint text-brand-green border border-brand-green/30 px-2.5 py-0.5 text-xs font-medium;
   }
   .input {
-    @apply w-full rounded-xl bg-black/40 border border-white/10 focus:border-brand-green focus:ring-2 focus:ring-brand-green/30 outline-none px-3 py-2 text-sm;
+    @apply w-full rounded-xl bg-white border border-brand-border focus:border-brand-green focus:ring-2 focus:ring-brand-green/25 outline-none px-3 py-2 text-sm text-brand-ink placeholder:text-brand-muted;
   }
   .nav-item {
-    @apply flex items-center gap-3 px-3 py-2 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition;
+    @apply flex items-center gap-3 px-3 py-2 rounded-xl text-brand-ink/70 hover:text-brand-ink hover:bg-brand-paper transition;
   }
   .nav-item-active {
-    @apply bg-brand-green/15 text-brand-greenSoft border border-brand-green/30;
+    @apply bg-brand-greenTint text-brand-green border border-brand-green/30;
   }
 }
 
+.bg-hero {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(22, 163, 74, 0.08), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(21, 128, 61, 0.08), transparent 50%),
+    #fafaf9;
+}
 .bg-grid {
   background-image:
-    radial-gradient(circle at 20% 10%, rgba(34, 197, 94, 0.08), transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(22, 163, 74, 0.08), transparent 45%),
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    radial-gradient(circle at 20% 10%, rgba(22, 163, 74, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(21, 128, 61, 0.06), transparent 45%),
+    linear-gradient(rgba(11, 15, 13, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 15, 13, 0.04) 1px, transparent 1px);
   background-size: auto, auto, 40px 40px, 40px 40px;
+  background-color: #fafaf9;
 }

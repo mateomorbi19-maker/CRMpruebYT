@@ -15,8 +15,10 @@ import { formatRelative, formatTime } from "@/lib/format";
 
 export default function ConversationsClient({
   initial,
+  userName,
 }: {
   initial: Conversation[];
+  userName: string;
 }) {
   const [list, setList] = useState(initial);
   const [selectedId, setSelectedId] = useState<string | null>(
@@ -63,7 +65,8 @@ export default function ConversationsClient({
     setSending(true);
     const optimistic = {
       id: `tmp${Date.now()}`,
-      from: "mateo" as const,
+      from: "operator" as const,
+      operatorName: userName,
       text,
       at: new Date().toISOString(),
     };
@@ -126,17 +129,19 @@ export default function ConversationsClient({
   }
 
   return (
-    <div className="h-[calc(100vh-3.5rem)] lg:h-screen flex">
+    <div className="h-[calc(100vh-3.5rem)] lg:h-screen flex bg-brand-white">
       {/* Lista */}
       <div
-        className={`${selected ? "hidden md:flex" : "flex"} flex-col w-full md:w-96 border-r border-white/5 bg-brand-night/60`}
+        className={`${selected ? "hidden md:flex" : "flex"} flex-col w-full md:w-96 border-r border-brand-border bg-brand-paper`}
       >
-        <div className="p-4 border-b border-white/5">
-          <h2 className="text-lg font-semibold mb-3">Conversaciones</h2>
+        <div className="p-4 border-b border-brand-border">
+          <h2 className="text-lg font-semibold text-brand-ink mb-3">
+            Conversaciones
+          </h2>
           <div className="relative">
             <Search
               size={16}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-ink/40"
             />
             <input
               value={query}
@@ -148,7 +153,7 @@ export default function ConversationsClient({
         </div>
         <div className="flex-1 overflow-y-auto">
           {filtered.length === 0 && (
-            <div className="p-6 text-center text-white/40 text-sm">
+            <div className="p-6 text-center text-brand-ink/40 text-sm">
               Sin resultados.
             </div>
           )}
@@ -158,36 +163,34 @@ export default function ConversationsClient({
               <button
                 key={c.id}
                 onClick={() => setSelectedId(c.id)}
-                className={`w-full text-left px-4 py-3 border-b border-white/5 hover:bg-white/5 transition flex gap-3 ${
-                  active ? "bg-brand-green/10 border-l-2 border-l-brand-green" : ""
+                className={`w-full text-left px-4 py-3 border-b border-brand-border hover:bg-white transition flex gap-3 ${
+                  active
+                    ? "bg-white border-l-4 border-l-brand-green"
+                    : "border-l-4 border-l-transparent"
                 }`}
               >
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center font-semibold shrink-0">
+                <div className="w-10 h-10 rounded-full bg-brand-paper border border-brand-border flex items-center justify-center font-semibold shrink-0 text-brand-ink">
                   {c.contactName[0]}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="font-medium truncate">
+                    <span className="font-medium truncate text-brand-ink">
                       {c.contactName}
                     </span>
-                    <span className="ml-auto text-xs text-white/40 shrink-0">
+                    <span className="ml-auto text-xs text-brand-ink/40 shrink-0">
                       {formatRelative(c.lastMessageAt)}
                     </span>
                   </div>
-                  <div className="text-xs text-white/50 truncate mt-0.5">
+                  <div className="text-xs text-brand-ink/55 truncate mt-0.5">
                     {c.preview}
                   </div>
                   <div className="flex items-center gap-2 mt-1.5">
-                    <span
-                      className={
-                        c.botEnabled ? "chip-green" : "chip text-white/40"
-                      }
-                    >
+                    <span className={c.botEnabled ? "chip-green" : "chip"}>
                       {c.botEnabled ? <Bot size={12} /> : <BotOff size={12} />}
                       {c.botEnabled ? "Bot activo" : "Bot pausado"}
                     </span>
                     {c.unread > 0 && (
-                      <span className="ml-auto text-[10px] bg-brand-green text-black rounded-full px-1.5 py-0.5 font-bold">
+                      <span className="ml-auto text-[10px] bg-brand-green text-white rounded-full px-1.5 py-0.5 font-bold">
                         {c.unread}
                       </span>
                     )}
@@ -201,30 +204,30 @@ export default function ConversationsClient({
 
       {/* Chat */}
       <div
-        className={`${selected ? "flex" : "hidden md:flex"} flex-col flex-1 min-w-0`}
+        className={`${selected ? "flex" : "hidden md:flex"} flex-col flex-1 min-w-0 bg-brand-white`}
       >
         {!selected ? (
-          <div className="flex-1 flex items-center justify-center text-white/40 text-sm">
+          <div className="flex-1 flex items-center justify-center text-brand-ink/40 text-sm">
             Seleccioná una conversación.
           </div>
         ) : (
           <>
-            <div className="flex items-center gap-3 px-4 py-3 border-b border-white/5 bg-brand-night/60">
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-brand-border bg-brand-white">
               <button
                 onClick={() => setSelectedId(null)}
-                className="md:hidden text-white/70"
+                className="md:hidden text-brand-ink/70"
                 aria-label="Volver"
               >
                 <ArrowLeft size={18} />
               </button>
-              <div className="w-10 h-10 rounded-full bg-brand-green text-black font-bold flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-brand-green text-white font-bold flex items-center justify-center">
                 {selected.contactName[0]}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-semibold truncate">
+                <div className="font-semibold truncate text-brand-ink">
                   {selected.contactName}
                 </div>
-                <div className="text-xs text-white/50 truncate flex items-center gap-1.5">
+                <div className="text-xs text-brand-ink/55 truncate flex items-center gap-1.5">
                   <Phone size={11} /> {selected.phone}
                 </div>
               </div>
@@ -234,8 +237,8 @@ export default function ConversationsClient({
                 disabled={toggling === selected.id}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-sm font-medium transition ${
                   selected.botEnabled
-                    ? "border-brand-green/40 bg-brand-green/15 text-brand-greenSoft"
-                    : "border-white/10 text-white/60 hover:border-white/20"
+                    ? "border-brand-green/40 bg-brand-greenTint text-brand-green"
+                    : "border-brand-border text-brand-ink/60 hover:border-brand-ink/30 bg-brand-paper"
                 }`}
                 title={
                   selected.botEnabled
@@ -249,48 +252,50 @@ export default function ConversationsClient({
                 </span>
                 <span
                   className={`relative inline-block w-9 h-5 rounded-full transition ${
-                    selected.botEnabled ? "bg-brand-green" : "bg-white/20"
+                    selected.botEnabled ? "bg-brand-green" : "bg-brand-border"
                   }`}
                 >
                   <span
                     className={`absolute top-0.5 ${
                       selected.botEnabled ? "left-4" : "left-0.5"
-                    } w-4 h-4 rounded-full bg-white transition-all`}
+                    } w-4 h-4 rounded-full bg-white shadow transition-all`}
                   />
                 </span>
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 bg-brand-black">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 bg-brand-paper">
               {selected.messages.length === 0 && (
-                <div className="text-center text-white/30 text-sm py-8">
+                <div className="text-center text-brand-ink/30 text-sm py-8">
                   Sin mensajes todavía.
                 </div>
               )}
               {selected.messages.map((m) => {
                 const isClient = m.from === "client";
-                const isMateo = m.from === "mateo";
+                const isOperator = m.from === "operator";
                 return (
                   <div
                     key={m.id}
                     className={`flex ${isClient ? "justify-start" : "justify-end"}`}
                   >
                     <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${
+                      className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-card ${
                         isClient
-                          ? "bg-white/10 text-white"
-                          : isMateo
-                            ? "bg-white text-black"
-                            : "bg-brand-green text-black"
+                          ? "bg-white text-brand-ink border border-brand-border"
+                          : isOperator
+                            ? "bg-brand-ink text-white"
+                            : "bg-brand-green text-white"
                       }`}
                     >
                       {!isClient && (
-                        <div className="text-[10px] uppercase tracking-wider opacity-70 mb-0.5">
-                          {isMateo ? "Mateo" : "Agente IA"}
+                        <div className="text-[10px] uppercase tracking-wider opacity-75 mb-0.5">
+                          {isOperator
+                            ? (m.operatorName ?? "Operador")
+                            : "Agente IA"}
                         </div>
                       )}
                       <div className="whitespace-pre-wrap">{m.text}</div>
-                      <div className="text-[10px] opacity-60 text-right mt-1">
+                      <div className="text-[10px] opacity-70 text-right mt-1">
                         {formatTime(m.at)}
                       </div>
                     </div>
@@ -300,9 +305,9 @@ export default function ConversationsClient({
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="border-t border-white/5 bg-brand-night/70">
+            <div className="border-t border-brand-border bg-brand-white">
               {selected.botEnabled && (
-                <div className="px-4 pt-2 text-[11px] text-brand-greenSoft flex items-center gap-1.5">
+                <div className="px-4 pt-2 text-[11px] text-brand-green flex items-center gap-1.5">
                   <Bot size={12} />
                   El bot está activo. Si enviás vos, vas a responder en
                   paralelo.
@@ -315,7 +320,7 @@ export default function ConversationsClient({
                   onChange={(e) => setDraft(e.target.value)}
                   onKeyDown={onKeyDown}
                   rows={1}
-                  placeholder="Escribí un mensaje como Mateo..."
+                  placeholder={`Escribí un mensaje como ${userName}...`}
                   className="input resize-none max-h-40 leading-6"
                   style={{
                     height: "auto",
@@ -352,7 +357,7 @@ export default function ConversationsClient({
                   <span className="hidden sm:inline">Enviar</span>
                 </button>
               </div>
-              <div className="px-4 pb-2 text-[10px] text-white/30">
+              <div className="px-4 pb-2 text-[10px] text-brand-ink/40">
                 Enter envía · Shift + Enter salto de línea · Tu mensaje lo
                 reenvía el agente por WhatsApp.
               </div>

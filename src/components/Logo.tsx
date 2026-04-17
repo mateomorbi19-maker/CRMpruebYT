@@ -2,6 +2,7 @@ import Image from "next/image";
 
 type Props = {
   size?: "sm" | "md" | "lg" | "xl";
+  variant?: "light" | "dark";
   className?: string;
 };
 
@@ -12,11 +13,16 @@ const dims: Record<NonNullable<Props["size"]>, { w: number; h: number }> = {
   xl: { w: 420, h: 260 },
 };
 
-export default function Logo({ size = "md", className = "" }: Props) {
+export default function Logo({
+  size = "md",
+  variant = "dark",
+  className = "",
+}: Props) {
   const { w, h } = dims[size];
+  const src = variant === "light" ? "/logo.svg" : "/logo-dark.svg";
   return (
     <Image
-      src="/logo.svg"
+      src={src}
       alt="Ready Golf Shop"
       width={w}
       height={h}

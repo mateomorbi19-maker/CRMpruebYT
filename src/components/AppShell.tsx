@@ -26,15 +26,17 @@ export default function AppShell({
     "Ready Golf CRM";
 
   return (
-    <div className="min-h-screen flex bg-brand-paper">
+    <div className="min-h-screen flex bg-brand-paper overflow-x-hidden">
       <Sidebar
         open={open}
         onClose={() => setOpen(false)}
         userName={userName}
       />
-      <div className="flex-1 min-w-0 flex flex-col">
+      <div className="flex-1 min-w-0 flex flex-col w-full">
         <TopBar onMenu={() => setOpen(true)} title={title} />
-        <main className="flex-1 min-w-0">{children}</main>
+        <main className="flex-1 min-w-0 w-full overflow-x-hidden">
+          {children}
+        </main>
       </div>
     </div>
   );

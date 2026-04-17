@@ -108,10 +108,12 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
   }
 
   return (
-    <div className="p-4 sm:p-8 max-w-7xl mx-auto">
+    <div className="p-3 sm:p-6 lg:p-8 max-w-7xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
         <div>
-          <h1 className="text-2xl font-bold">Productos</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-brand-ink">
+            Productos
+          </h1>
           <p className="text-brand-ink/50 text-sm">
             Edición directa. Los cambios se envían a la memoria del agente.
           </p>
@@ -142,7 +144,7 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
         </div>
       </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-2 mb-4">
+      <div className="flex gap-2 flex-wrap mb-4">
         <button
           onClick={() => setCat("all")}
           className={`px-3 py-1.5 rounded-xl text-sm border whitespace-nowrap ${
@@ -250,7 +252,7 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
                 key={p.id}
                 className="px-4 sm:px-5 py-4 md:grid md:grid-cols-12 md:gap-4 flex flex-col gap-2 hover:bg-brand-paper/60 transition"
               >
-                <div className="md:col-span-5">
+                <div className="md:col-span-5 min-w-0">
                   {editing ? (
                     <input
                       value={draft.name}
@@ -260,8 +262,8 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
                       className="input"
                     />
                   ) : (
-                    <div className="flex items-start gap-3">
-                      <div className="font-medium text-sm sm:text-base">
+                    <div className="flex items-start gap-3 min-w-0">
+                      <div className="font-medium text-sm sm:text-base break-words min-w-0 flex-1">
                         {p.name}
                       </div>
                       {p.url && (

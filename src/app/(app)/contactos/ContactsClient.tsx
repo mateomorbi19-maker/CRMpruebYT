@@ -53,10 +53,12 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
   }, [contacts, filter, q]);
 
   return (
-    <div className="p-4 sm:p-8 max-w-7xl mx-auto">
+    <div className="p-3 sm:p-6 lg:p-8 max-w-7xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
         <div>
-          <h1 className="text-2xl font-bold">Contactos</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-brand-ink">
+            Contactos
+          </h1>
           <p className="text-brand-ink/50 text-sm">
             Clientes y leads generados por el agente de WhatsApp.
           </p>
@@ -120,14 +122,17 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
               key={c.id}
               className="px-4 sm:px-5 py-4 md:grid md:grid-cols-12 md:gap-4 flex flex-col gap-2 hover:bg-brand-paper/60 transition"
             >
-              <div className="md:col-span-4 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brand-paper border border-brand-border flex items-center justify-center font-semibold shrink-0">
+              <div className="md:col-span-4 flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 rounded-full bg-brand-paper border border-brand-border flex items-center justify-center font-semibold shrink-0 text-brand-ink">
                   {c.name[0]}
                 </div>
-                <div className="min-w-0">
-                  <div className="font-medium truncate">{c.name}</div>
-                  <div className="text-xs text-brand-ink/50 flex items-center gap-1.5">
-                    <Phone size={11} /> {c.phone}
+                <div className="min-w-0 flex-1">
+                  <div className="font-medium truncate text-brand-ink">
+                    {c.name}
+                  </div>
+                  <div className="text-xs text-brand-ink/50 flex items-center gap-1.5 truncate">
+                    <Phone size={11} className="shrink-0" />
+                    <span className="truncate">{c.phone}</span>
                   </div>
                 </div>
               </div>
@@ -172,8 +177,8 @@ export default function ContactsClient({ contacts }: { contacts: Contact[] }) {
               </div>
 
               {c.notes && (
-                <div className="md:col-span-12 text-xs text-brand-ink/50 md:pl-14 md:pt-2 md:border-t md:border-brand-border">
-                  <span className="text-brand-ink/30 uppercase tracking-wider mr-1">
+                <div className="md:col-span-12 text-xs text-brand-ink/60 md:pl-14 md:pt-2 md:border-t md:border-brand-border break-words">
+                  <span className="text-brand-ink/40 uppercase tracking-wider mr-1">
                     Nota:
                   </span>
                   {c.notes}

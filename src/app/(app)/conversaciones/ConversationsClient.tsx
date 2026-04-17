@@ -21,9 +21,7 @@ export default function ConversationsClient({
   userName: string;
 }) {
   const [list, setList] = useState(initial);
-  const [selectedId, setSelectedId] = useState<string | null>(
-    initial[0]?.id ?? null,
-  );
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [toggling, setToggling] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
@@ -48,6 +46,14 @@ export default function ConversationsClient({
   }, [list, query]);
 
   const selected = list.find((c) => c.id === selectedId) ?? null;
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    if (mq.matches && selectedId === null && initial[0]) {
+      setSelectedId(initial[0].id);
+    }
+  }, [initial, selectedId]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -129,7 +135,7 @@ export default function ConversationsClient({
   }
 
   return (
-    <div className="h-[calc(100vh-3.5rem)] lg:h-screen flex bg-brand-white">
+    <div className="h-[calc(100dvh-3.5rem)] lg:h-screen flex bg-brand-white overflow-hidden">
       {/* Lista */}
       <div
         className={`${selected ? "hidden md:flex" : "flex"} flex-col w-full md:w-96 border-r border-brand-border bg-brand-paper`}
@@ -212,33 +218,33 @@ export default function ConversationsClient({
           </div>
         ) : (
           <>
-            <div className="flex items-center gap-3 px-4 py-3 border-b border-brand-border bg-brand-white">
+            <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 border-b border-brand-border bg-brand-white">
               <button
                 onClick={() => setSelectedId(null)}
-                className="md:hidden text-brand-ink/70"
+                className="md:hidden p-1 -ml-1 text-brand-ink/70 shrink-0"
                 aria-label="Volver"
               >
-                <ArrowLeft size={18} />
+                <ArrowLeft size={20} />
               </button>
-              <div className="w-10 h-10 rounded-full bg-brand-green text-white font-bold flex items-center justify-center">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-green text-white font-bold flex items-center justify-center shrink-0">
                 {selected.contactName[0]}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-semibold truncate text-brand-ink">
+                <div className="font-semibold truncate text-brand-ink text-sm sm:text-base">
                   {selected.contactName}
                 </div>
-                <div className="text-xs text-brand-ink/55 truncate flex items-center gap-1.5">
-                  <Phone size={11} /> {selected.phone}
+                <div className="text-[11px] sm:text-xs text-brand-ink/55 truncate flex items-center gap-1">
+                  <Phone size={10} /> {selected.phone}
                 </div>
               </div>
 
               <button
                 onClick={() => toggleBot(selected.id)}
                 disabled={toggling === selected.id}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-sm font-medium transition ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-xl sm:border text-sm font-medium transition shrink-0 ${
                   selected.botEnabled
-                    ? "border-brand-green/40 bg-brand-greenTint text-brand-green"
-                    : "border-brand-border text-brand-ink/60 hover:border-brand-ink/30 bg-brand-paper"
+                    ? "sm:border-brand-green/40 sm:bg-brand-greenTint text-brand-green"
+                    : "sm:border-brand-border text-brand-ink/60 sm:bg-brand-paper"
                 }`}
                 title={
                   selected.botEnabled
@@ -251,13 +257,13 @@ export default function ConversationsClient({
                   {selected.botEnabled ? "Bot activo" : "Bot pausado"}
                 </span>
                 <span
-                  className={`relative inline-block w-9 h-5 rounded-full transition ${
+                  className={`relative inline-block w-8 h-5 rounded-full transition ${
                     selected.botEnabled ? "bg-brand-green" : "bg-brand-border"
                   }`}
                 >
                   <span
                     className={`absolute top-0.5 ${
-                      selected.botEnabled ? "left-4" : "left-0.5"
+                      selected.botEnabled ? "left-3.5" : "left-0.5"
                     } w-4 h-4 rounded-full bg-white shadow transition-all`}
                   />
                 </span>
@@ -279,7 +285,7 @@ export default function ConversationsClient({
                     className={`flex ${isClient ? "justify-start" : "justify-end"}`}
                   >
                     <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-card ${
+                      className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm shadow-card break-words ${
                         isClient
                           ? "bg-white text-brand-ink border border-brand-border"
                           : isOperator

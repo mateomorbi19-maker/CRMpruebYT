@@ -1,0 +1,22 @@
+[
+  { "id": "p1", "name": "Driver TaylorMade QI4D MAX Vara Mitsubishi Reax", "price": 1513500, "category": "Drivers", "stock": 3, "url": "https://www.readygolf.com.ar/productos/driver-taylormade-qi4d-max-vara-mitsubishi-reax-nuevo-5zv4i/", "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p2", "name": "Madera Fairway TaylorMade QI4D MAX #3", "price": 885000, "category": "Maderas", "stock": 4, "url": "https://www.readygolf.com.ar/productos/madera-fairway-taylormade-qi4d-max-3-nuevo-18s3r/", "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p3", "name": "Híbrido TaylorMade QI4D Rescue MAX", "price": 697500, "category": "Híbridos", "stock": 5, "url": "https://www.readygolf.com.ar/productos/hibrido-taylormade-qi4d-rescue-nuevo-copia-oz8lc/", "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p4", "name": "Driver TaylorMade Qi35 Gold", "price": 1299000, "category": "Drivers", "stock": 2, "url": "https://www.readygolf.com.ar/productos/driver-taylormade-qi35-gold-nuevo/", "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p5", "name": "Set de Hierros TaylorMade P790 2025 (4-P)", "price": 3150000, "category": "Set de Hierros", "stock": 2, "url": "https://www.readygolf.com.ar/productos/hierros-taylormade-p790-stiff-4-al-p-7-palos1/", "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p6", "name": "Bolsa Ping Pioneer Carro", "price": 680500, "category": "Bolsas", "stock": 6, "url": "https://www.readygolf.com.ar/productos/bolsa-ping-pioneer-cart-bag-nuevo-ym55m/", "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p7", "name": "Wedge TaylorMade MG5 Milled Grind 5", "price": 400000, "category": "Wedges", "stock": 8, "url": "https://www.readygolf.com.ar/productos/wedge-taylormade-mg5-milled-grind-5-satin-chrome-nuevo-kscec/", "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p8", "name": "Zapatos Adidas Tour360 20th Anniversary", "price": 344900, "category": "Indumentaria", "stock": 10, "url": "https://www.readygolf.com.ar/productos/zapatos-adidas-tour360-20th-anniversary-nuevo-87yqm/", "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p9", "name": "Guante FootJoy Spectrum", "price": 44900, "category": "Accesorios", "stock": 25, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p10", "name": "Grip Golf Pride MCC PLUS4", "price": 46900, "category": "Accesorios", "stock": 40, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p11", "name": "Bolsa Titleist Cart 14", "price": 544500, "category": "Bolsas", "stock": 3, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p12", "name": "Chomba Deportiva Stuburt Kestrel - Protección UV", "price": 49900, "category": "Indumentaria", "stock": 15, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p13", "name": "Wedge Titleist Vokey SM10 Chrome", "price": 375000, "category": "Wedges", "stock": 7, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p14", "name": "Pelotas Callaway Super Soft x 12", "price": 65360, "category": "Pelotas", "stock": 30, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p15", "name": "Pelotas Titleist Pro V1 x 12", "price": 123000, "category": "Pelotas", "stock": 22, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p16", "name": "Pollera Callaway High Waist (Dama)", "price": 84429, "category": "Indumentaria", "stock": 9, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p17", "name": "Chomba Callaway Waist Length Top (Dama)", "price": 63322, "category": "Indumentaria", "stock": 12, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p18", "name": "Guante Adidas ADITECH 24", "price": 21999, "category": "Accesorios", "stock": 35, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p19", "name": "Bolsa Titleist Players 5 Trípode", "price": 480000, "category": "Bolsas", "stock": 4, "updatedAt": "2026-04-17T00:00:00.000Z" },
+  { "id": "p20", "name": "Gorra TaylorMade Tour Radar TM25", "price": 85500, "category": "Accesorios", "stock": 18, "updatedAt": "2026-04-17T00:00:00.000Z" }
+]

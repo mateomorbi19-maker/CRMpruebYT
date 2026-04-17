@@ -1,0 +1,12 @@
+[
+  { "id": "c1", "name": "Juan Pérez", "phone": "+54 9 11 4455-0001", "status": "client", "tags": ["recurrente","drivers"], "lastInteraction": "2026-04-17T14:22:00.000Z", "totalSpent": 1913500, "notes": "Compró Driver Qi4D MAX. Interesado en wedges." },
+  { "id": "c2", "name": "Mariana López", "phone": "+54 9 11 4455-0002", "status": "qualified_lead", "tags": ["bolsa","consulta-envio"], "lastInteraction": "2026-04-17T13:05:00.000Z", "totalSpent": 0, "notes": "Consultó por bolsa Titleist Players 5. Presupuesto confirmado." },
+  { "id": "c3", "name": "Federico Gómez", "phone": "+54 9 11 4455-0003", "status": "lead", "tags": ["pelotas"], "lastInteraction": "2026-04-16T20:40:00.000Z", "totalSpent": 0, "notes": "Primera consulta por pelotas." },
+  { "id": "c4", "name": "Lucía Fernández", "phone": "+54 9 11 4455-0004", "status": "client", "tags": ["indumentaria","dama"], "lastInteraction": "2026-04-16T18:12:00.000Z", "totalSpent": 147751, "notes": "Compró chomba + pollera Callaway." },
+  { "id": "c5", "name": "Diego Romero", "phone": "+54 9 11 4455-0005", "status": "qualified_lead", "tags": ["hierros","fitting"], "lastInteraction": "2026-04-17T11:30:00.000Z", "totalSpent": 0, "notes": "Quiere set P790, pide fitting." },
+  { "id": "c6", "name": "Camila Ruiz", "phone": "+54 9 11 4455-0006", "status": "client", "tags": ["pelotas","accesorios"], "lastInteraction": "2026-04-15T10:10:00.000Z", "totalSpent": 188360, "notes": "Compra mensual de pelotas Pro V1." },
+  { "id": "c7", "name": "Martín Álvarez", "phone": "+54 9 11 4455-0007", "status": "lead", "tags": ["driver"], "lastInteraction": "2026-04-14T17:50:00.000Z", "totalSpent": 0, "notes": "Consultó por Qi35 Gold, pidió tiempo." },
+  { "id": "c8", "name": "Sofía Castro", "phone": "+54 9 11 4455-0008", "status": "qualified_lead", "tags": ["zapatos"], "lastInteraction": "2026-04-17T09:45:00.000Z", "totalSpent": 0, "notes": "Busca Tour360 talle 40 dama." },
+  { "id": "c9", "name": "Ramiro Paz", "phone": "+54 9 11 4455-0009", "status": "client", "tags": ["wedges"], "lastInteraction": "2026-04-10T15:20:00.000Z", "totalSpent": 400000, "notes": "Compró MG5." },
+  { "id": "c10", "name": "Valentina Díaz", "phone": "+54 9 11 4455-0010", "status": "lead", "tags": ["bolsa"], "lastInteraction": "2026-04-09T12:00:00.000Z", "totalSpent": 0, "notes": "Primera interacción por bolsa de carro." }
+]

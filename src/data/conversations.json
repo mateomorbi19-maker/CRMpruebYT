@@ -1,0 +1,96 @@
+[
+  {
+    "id": "conv1",
+    "contactId": "c1",
+    "contactName": "Juan Pérez",
+    "phone": "+54 9 11 4455-0001",
+    "status": "client",
+    "botEnabled": true,
+    "unread": 0,
+    "lastMessageAt": "2026-04-17T14:22:00.000Z",
+    "preview": "Perfecto Juan, te confirmo el envío para mañana.",
+    "messages": [
+      { "id": "m1", "from": "client", "text": "Hola, quería saber si tienen el Driver Qi4D MAX en stock.", "at": "2026-04-17T14:10:00.000Z" },
+      { "id": "m2", "from": "bot", "text": "¡Hola Juan! Sí, tenemos el Driver TaylorMade QI4D MAX disponible a $1.513.500. ¿Querés que te lo reserve?", "at": "2026-04-17T14:10:40.000Z" },
+      { "id": "m3", "from": "client", "text": "Dale, lo reservo. ¿Envían a Palermo?", "at": "2026-04-17T14:15:00.000Z" },
+      { "id": "m4", "from": "bot", "text": "Sí, hacemos envío CABA en 24hs sin cargo. Te paso link de pago.", "at": "2026-04-17T14:15:30.000Z" },
+      { "id": "m5", "from": "bot", "text": "Perfecto Juan, te confirmo el envío para mañana.", "at": "2026-04-17T14:22:00.000Z" }
+    ]
+  },
+  {
+    "id": "conv2",
+    "contactId": "c2",
+    "contactName": "Mariana López",
+    "phone": "+54 9 11 4455-0002",
+    "status": "qualified_lead",
+    "botEnabled": true,
+    "unread": 2,
+    "lastMessageAt": "2026-04-17T13:05:00.000Z",
+    "preview": "¿Tienen la bolsa en color negro?",
+    "messages": [
+      { "id": "m1", "from": "client", "text": "Hola! Vi la bolsa Titleist Players 5 Trípode, ¿cuánto sale?", "at": "2026-04-17T12:50:00.000Z" },
+      { "id": "m2", "from": "bot", "text": "Hola Mariana, la Bolsa Titleist Players 5 Trípode está $480.000. ¿Querés verla en la tienda?", "at": "2026-04-17T12:50:45.000Z" },
+      { "id": "m3", "from": "client", "text": "¿Tienen la bolsa en color negro?", "at": "2026-04-17T13:05:00.000Z" }
+    ]
+  },
+  {
+    "id": "conv3",
+    "contactId": "c3",
+    "contactName": "Federico Gómez",
+    "phone": "+54 9 11 4455-0003",
+    "status": "lead",
+    "botEnabled": true,
+    "unread": 1,
+    "lastMessageAt": "2026-04-16T20:40:00.000Z",
+    "preview": "Quería ver pelotas económicas",
+    "messages": [
+      { "id": "m1", "from": "client", "text": "Hola, quería ver pelotas económicas", "at": "2026-04-16T20:40:00.000Z" }
+    ]
+  },
+  {
+    "id": "conv4",
+    "contactId": "c5",
+    "contactName": "Diego Romero",
+    "phone": "+54 9 11 4455-0005",
+    "status": "qualified_lead",
+    "botEnabled": false,
+    "unread": 0,
+    "lastMessageAt": "2026-04-17T11:30:00.000Z",
+    "preview": "Te paso mañana con los datos del fitting",
+    "messages": [
+      { "id": "m1", "from": "client", "text": "Necesito un set P790 pero quiero hacer fitting antes", "at": "2026-04-17T11:10:00.000Z" },
+      { "id": "m2", "from": "bot", "text": "Hola Diego, el Set P790 2025 está $3.150.000. Podemos coordinar fitting en el local.", "at": "2026-04-17T11:11:00.000Z" },
+      { "id": "m3", "from": "mateo", "text": "Diego, soy Mateo. Te paso mañana con los datos del fitting.", "at": "2026-04-17T11:30:00.000Z" }
+    ]
+  },
+  {
+    "id": "conv5",
+    "contactId": "c8",
+    "contactName": "Sofía Castro",
+    "phone": "+54 9 11 4455-0008",
+    "status": "qualified_lead",
+    "botEnabled": true,
+    "unread": 0,
+    "lastMessageAt": "2026-04-17T09:45:00.000Z",
+    "preview": "Genial, te aviso cuando llegue el talle.",
+    "messages": [
+      { "id": "m1", "from": "client", "text": "Los Tour360 en talle 40 dama ¿están?", "at": "2026-04-17T09:40:00.000Z" },
+      { "id": "m2", "from": "bot", "text": "Hola Sofía, ahora no tenemos ese talle pero nos llegan la semana que viene.", "at": "2026-04-17T09:41:00.000Z" },
+      { "id": "m3", "from": "client", "text": "Genial, te aviso cuando llegue el talle.", "at": "2026-04-17T09:45:00.000Z" }
+    ]
+  },
+  {
+    "id": "conv6",
+    "contactId": "c4",
+    "contactName": "Lucía Fernández",
+    "phone": "+54 9 11 4455-0004",
+    "status": "client",
+    "botEnabled": true,
+    "unread": 0,
+    "lastMessageAt": "2026-04-16T18:12:00.000Z",
+    "preview": "Llegó todo perfecto, gracias!",
+    "messages": [
+      { "id": "m1", "from": "client", "text": "Llegó todo perfecto, gracias!", "at": "2026-04-16T18:12:00.000Z" }
+    ]
+  }
+]

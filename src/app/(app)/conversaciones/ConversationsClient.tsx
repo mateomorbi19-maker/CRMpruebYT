@@ -138,7 +138,7 @@ export default function ConversationsClient({
     <div className="h-[calc(100dvh-3.5rem)] lg:h-screen flex bg-brand-white overflow-hidden">
       {/* Lista */}
       <div
-        className={`${selected ? "hidden md:flex" : "flex"} flex-col w-full md:w-96 border-r border-brand-border bg-brand-paper`}
+        className={`${selected ? "hidden md:flex" : "flex"} flex-col w-full md:w-96 bg-brand-paper md:neon-border-r relative z-10`}
       >
         <div className="p-4 border-b border-brand-border">
           <h2 className="text-lg font-semibold text-brand-ink mb-3">
@@ -169,9 +169,9 @@ export default function ConversationsClient({
               <button
                 key={c.id}
                 onClick={() => setSelectedId(c.id)}
-                className={`w-full text-left px-4 py-3 border-b border-brand-border hover:bg-white transition flex gap-3 ${
+                className={`w-full text-left px-4 py-3 border-b border-brand-border hover:bg-brand-white transition flex gap-3 ${
                   active
-                    ? "bg-white border-l-4 border-l-brand-green"
+                    ? "bg-brand-white border-l-4 border-l-brand-neon shadow-[inset_4px_0_12px_-4px_rgba(56,189,248,0.45)]"
                     : "border-l-4 border-l-transparent"
                 }`}
               >
@@ -287,9 +287,9 @@ export default function ConversationsClient({
                     <div
                       className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm shadow-card break-words ${
                         isClient
-                          ? "bg-white text-brand-ink border border-brand-border"
+                          ? "bg-brand-white text-brand-ink border border-brand-border"
                           : isOperator
-                            ? "bg-brand-ink text-white"
+                            ? "bg-brand-accent text-white"
                             : "bg-brand-green text-white"
                       }`}
                     >
